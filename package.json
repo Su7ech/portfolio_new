@@ -1,0 +1,23 @@
+{
+  "name": "portfolio_new",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prewatch:css": "npm run build:css",
+    "prewatch:html": "npm run build:html",
+    "prewatch:all": "parallelshell 'npm run build:css' 'npm run build:html'",
+    "build:css": "node-sass src/scss -o src/css",
+    "build:html": "pug src/pugfiles/ -o src/",
+    "watch:html": "pug -P -w src/pugfiles/ -o src/",
+    "watch:css": "node-sass -w src/scss -o src/css",
+    "server": "browser-sync start --server \"src\" --files \"src\"",
+    "prestart": "concurrently \"npm run build:css\" \"npm run build:html\"",
+    "start": "concurrently \"npm run watch:css\" \"npm run watch:html\" \"npm run server\""
+  },
+  "author": "Thomas Baroody",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.13"
+  }
+}
