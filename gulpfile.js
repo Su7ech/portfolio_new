@@ -19,7 +19,7 @@ gulp.task('server', function() {
     });
 
     gulp.watch("src/scss/*.+(scss|sass)", ['sass']);
-    gulp.watch("src/pugfiles/*.pug", ['pug']);
+    gulp.watch("src/pugfiles/**/*.pug", ['pug']);
     gulp.watch("src/**/*.html").on('change', browserSync.reload);
 });
 
@@ -45,10 +45,14 @@ gulp.task('sass', function() {
   });
   
   gulp.task('pug', function() {
-    return gulp.src("src/pugfiles/**/*.pug")
+    return gulp.src("src/pugfiles/**/!(_)*.pug")
       .pipe(pug({
         pretty: true
       }))
       .pipe(gulp.dest("src/"))
       .pipe(browserSync.stream());
+  });
+
+  gulp.task('default', function(cb){
+    runSequence(['sass', 'pug'], 'server', cb);
   });
