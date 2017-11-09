@@ -1,7 +1,10 @@
 extends extends/_default.pug
 block content 
-    header
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
         include includes/_nav.pug
+    header.jumbotron.jumbotron-fluid.header-section
         include includes/_header.pug
-    footer.footer
+    section.portfolio-section
+        include includes/_portfolio.pug
+    footer.footer-section
         include includes/_footer.pug
