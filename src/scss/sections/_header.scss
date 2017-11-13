@@ -2,5 +2,22 @@
     margin-top: 3.5rem;
     .header-portrait {
         margin-bottom: 3.125rem;
+        @include media-breakpoint-down(sm) {
+            width: 300px;
+            height: 300px;
+        }
+        @include media-breakpoint-down(xs) {
+            width: 250px;
+            height: 250px;
+        }
+    }
+    h1.intro-name,
+    h1.intro-title {
+        @include media-breakpoint-down(sm) {
+            font-size: 3rem;
+        }
+        @include media-breakpoint-down(xs) {
+            font-size: 2rem;
+        }
     }
 }
